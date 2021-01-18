@@ -2,6 +2,7 @@ package org.launchcode.codingevents.models;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -24,11 +25,27 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @NotBlank(message = "Address is required.")
+    private String address;
+
+    private String isRegistrationRequired;
+
+    @Size(min = 1, message = "Number of attendees should be 1 and above")
+    private String numberOfAttendees;
+
+    @NotEmpty
+    private String sponsor;
+
+    public Event(String name, String description, String contactEmail, String address, String isRegistrationRequired,
+                 String numberOfAttendees, String sponsor) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.address = address;
+        this.isRegistrationRequired = isRegistrationRequired;
+        this.numberOfAttendees = numberOfAttendees;
+        this.sponsor = sponsor;
     }
 
     public Event() {
@@ -62,6 +79,38 @@ public class Event {
 
     public int getId() {
         return id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getIsRegistrationRequired() {
+        return isRegistrationRequired;
+    }
+
+    public void setRegistrationRequired(String registrationRequired) {
+        isRegistrationRequired = registrationRequired;
+    }
+
+    public String getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
+    public void setNumberOfAttendees(String numberOfAttendees) {
+        this.numberOfAttendees = numberOfAttendees;
+    }
+
+    public String getSponsor() {
+        return sponsor;
+    }
+
+    public void setSponsor(String sponsor) {
+        this.sponsor = sponsor;
     }
 
     @Override
