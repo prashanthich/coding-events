@@ -36,8 +36,10 @@ public class Event {
     @NotEmpty
     private String sponsor;
 
+    private EventType type;
+
     public Event(String name, String description, String contactEmail, String address, String isRegistrationRequired,
-                 String numberOfAttendees, String sponsor) {
+                 String numberOfAttendees, String sponsor, EventType type) {
         this();
         this.name = name;
         this.description = description;
@@ -46,6 +48,7 @@ public class Event {
         this.isRegistrationRequired = isRegistrationRequired;
         this.numberOfAttendees = numberOfAttendees;
         this.sponsor = sponsor;
+        this.type = type;
     }
 
     public Event() {
@@ -111,6 +114,14 @@ public class Event {
 
     public void setSponsor(String sponsor) {
         this.sponsor = sponsor;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     @Override

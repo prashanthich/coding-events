@@ -33,8 +33,8 @@
     <div class="form-group">
         <label>Registration Required
             <select class="form-control" name="isRegistrationRequired" >
-                <option th:value="true">True</option>
-                <option th:value="false">False</option>
+                <option th:value="true" th:text="True"></option>
+                <option th:value="false" th:text="False"></option>
             </select>
         </label>
     </div>
@@ -49,6 +49,16 @@
             <input th:field="${event.sponsor}" class="form-control">
         </label>
         <p class="error" th:errors="${event.sponsor}"></p>
+    </div>
+    <div class="form-group">
+        <label>Type
+            <select th:field="${event.type}">
+                <option th:each="type: ${types}"
+                        th:value="${type}"
+                        th:text="${type.displayName}"
+                ></option>
+            </select>
+        </label>
     </div>
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-success">

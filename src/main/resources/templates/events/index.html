@@ -16,6 +16,7 @@
             <th>Registration Required</th>
             <th>Number of Attendees</th>
             <th>Sponsor</th>
+            <th>Type</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
@@ -27,6 +28,7 @@
         <td th:text="${event.isRegistrationRequired}"></td>
         <td th:text="${event.numberOfAttendees}"></td>
         <td th:text="${event.sponsor}"></td>
+        <td th:text="${event.type.displayName}"></td>
     </tr>
 </table>
 
